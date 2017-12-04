@@ -1,0 +1,61 @@
+<div class="navbar-fixed">
+  <nav class="top-nav">
+    <div class="nav-wrapper col s12">
+      <div class="container">
+        <% if current_user %>
+          <a href="/posts" class="brand-logo">
+            <i class="material-icons">group</i>
+            <span class="logo-title">
+              ProgrammerHub
+            </span>
+          </a>
+        <% else %>
+          <a href="/" class="brand-logo">
+            <i class="material-icons">group</i>
+            <span class="logo-title">
+              ProgrammerHub
+            </span>
+          </a>
+        <% end %>
+
+        <a href="#" data-activates="side-bar" class="button-collapse"><i class="material-icons">menu</i></a>
+
+        <ul class="right hide-on-med-and-down">
+          <% if current_user %>
+            <li>
+              <a class="dropdown-button" href="#!" data-activates="dropdown1">
+                <img src="<%= current_user.avatar.thumb.url %>" alt="" class="responsive-img circle nav-image">
+              </a>
+            </li>
+
+            <ul id="dropdown1" class="dropdown-content">
+              <li><%= link_to 'Profile', user_path(current_user) %></li>
+              <li class="divider"></li>
+              <li><%= link_to 'Config', edit_user_registration_path(current_user) %></li>
+              <li class="divider"></li>
+              <li><%= link_to('Log Out', destroy_user_session_path, :method => :delete) %></li>
+            </ul>
+          <% else %>
+            <li><a href="/users/sign_in">Login</a></li>
+            <li><a href="/users/sign_up">Register</a></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<ul class="side-nav" id="side-bar">
+  <% if current_user %>
+    <li><%= link_to 'Feed', posts_path %></li>
+    <li><%= link_to 'Profile', user_path(current_user) %></li>
+    <li><%= link_to 'Config', edit_user_registration_path(current_user) %></li>
+    <li><div class="divider"></div></li>
+    <li>  <%= link_to('Log out', destroy_user_session_path, :method => :delete) %></li>
+  <% else %>
+    <li><a href="/users/sign_in">Log in</a></li>
+    <li><div class="divider"></div></li>
+    <li><a href="/users/sign_up">Register</a></li>
+    <li><div class="divider"></div></li>
+  <% end %>
+</ul>

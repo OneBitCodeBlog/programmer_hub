@@ -1,2 +1,10 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="row home">
+  <div class="center">
+    <h4 class="title">A Programmer Networking</h4>
+    <h5 class="subtitle">Join to ProgrammerHub and connect with thousands of other software developers to learn and share</h5>
+
+    <% if !current_user %>
+      <%= link_to 'Join Now', new_user_registration_path, class: "btn btn-large grey darken-2 home-button"  %>
+    <% end %>
+  </div>
+</div>

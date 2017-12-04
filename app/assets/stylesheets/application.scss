@@ -1,2 +1,14 @@
 @import "materialize";
 @import "material_icons";
+@import "shared/navbar";
+@import "shared/footer";
+@import "pages";
+
+
+main .container {
+  margin-top: 20px;
+}
+
+.card .card-content {
+  padding-bottom: 3px;
+}

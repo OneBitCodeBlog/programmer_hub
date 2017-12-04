@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Programmerhub</title>
+    <title>RedeSocial</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,18 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <%= render "shared/navbar" %>
+    </header>
+
+    <main>
+      <div class="container">
+        <%= yield %>
+      </div>
+    </main>
+
+    <footer>
+      <%= render "shared/footer" %>
+    </footer>
   </body>
 </html>
