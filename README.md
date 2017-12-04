@@ -1,24 +1,21 @@
-# README
+Tutorial **[One Bit Code](http://onebitcode.com)**!
+===================
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![OneBitCode](http://bootcamp.onebitcode.com/wp-content/uploads/2017/02/github-img-1.png)
 
-Things you may want to cover:
+O Blog **[One Bit Code](http://onebitcode.com)** é destinado a criar tutoriais e guias para disseminar o conhecimento sobre Programação em Português no Brasil.
 
-* Ruby version
+O One Bit Code tem como foco o framework **Ruby On Rails**, mas também temos conteúdo sobre **Angular 2**, **Ionic 2**, **React** e outros frameworks legais **\o/**.
 
-* System dependencies
+Saiba mais sobre o Blog **[clicando aqui](http://onebitcode.com)**!
 
-* Configuration
+----------
 
-* Database creation
 
-* Database initialization
+Programmer Hub
+-------------
 
-* How to run the test suite
+Uma rede social voltada para desenvolvedores feita em Ruby On Rails.
+Esse projeto foi desenvolvido como parte da Semana Super Full Stack do OneBitCode.com em 3 aulas e 1 live.
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Visite a SSFS **[clicando aqui!](http://super.onebitcode.com)**
