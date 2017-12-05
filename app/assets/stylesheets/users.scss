@@ -1,3 +1,42 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.user-name {
+  font-size: 16px;
+  float: left;
+  color: #aaa;
+}
+
+.btn-follow {
+  color: #bdbdbd;
+}
+
+.btn-unfollow {
+  padding-left: 5px;
+}
+
+.activity-info {
+  margin-top: 20px;
+}
+
+p.p-info {
+  color: #aaa;
+  font-size: 20px;
+}
+
+.user-card-search {
+  margin-left: 15%;
+  width: 70%;
+}
+
+.user-description {
+  float: left;
+  color: grey;
+  margin-top: 0;
+  display: block;
+}
+
+.follow-title {
+  color: #aaa;
+}
+
+.tabs .tab a{
+  font-size: 12px;
+}

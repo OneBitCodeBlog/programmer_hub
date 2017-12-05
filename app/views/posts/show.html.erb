@@ -1,0 +1,55 @@
+<div class="post-show">
+  <div class="row center">
+    <%= render 'shared/post',post: @post %>
+  </div>
+
+  <div class="row">
+    <div class="card hoverable">
+      <div class="card-content">
+        <div class="row">
+          <div class="col m12">
+            <h5>Comments</h5>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col m12">
+            <%= form_for @comment, url: "/comments", :method => "post" do |f| %>
+              <div class="input-field">
+                <%= f.text_area :comment, placeholder: "What are you thinking about this post?", class: "materialize-textarea col l9" %>
+                <%= f.hidden_field :post_id, value: @post.id %>
+              </div>
+              <%= f.submit "Comment", class: "btn red lighten-2" %>
+            <% end %>
+          </div>
+        </div>
+
+          <% @comments.reverse_each do |comment| %>
+            <div class="divider"></div>
+
+            <div class="comment">
+              <div class="row">
+                <div class="col m2">
+                  <img src="<%= comment.user.avatar.thumb.url %>" alt="" class="circle responsive-img user-image">
+                </div>
+                <div class="col m7">
+                  <a href="/users/<%= comment.user_id %>" class="comment-user-name grey-text text-darken-2">
+                    <p><%= comment.user.name %></p>
+                  </a>
+                </div>
+                <div class="col m2">
+                  <b class="grey-text right"><%= comment.created_at.strftime('%Hh%M') %></b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col m12">
+                  <p class="comment-content"><%= comment.comment %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

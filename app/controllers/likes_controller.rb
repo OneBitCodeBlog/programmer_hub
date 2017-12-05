@@ -1,6 +1,7 @@
 class LikesController < ApplicationController
+  before_action :set_post  
+  before_action :set_event, only: [:destroy]
   load_and_authorize_resource
-  before_action :set_post
   
   def create
     @like = Like.new(user: current_user, post: @post)
@@ -16,7 +17,6 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @like = Like.find_by(user: current_user, post: @post)
     @like.destroy
 
     respond_to do |format|
@@ -29,5 +29,10 @@ class LikesController < ApplicationController
 
     def set_post
       @post = Post.find(params[:id])
+    end
+
+    def set_event
+      @like = Like.find_by(user: current_user, post: @post)      
+      @event = @like
     end
 end

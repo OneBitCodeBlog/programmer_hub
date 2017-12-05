@@ -1,3 +1,55 @@
-// Place all the styles related to the Posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.post-user-name {
+  font-size: 18px;
+  float: left;
+  margin-left: 20px;
+
+  a {
+    color: #aaa;
+  }
+}
+
+.post-date {
+  font-size: 14px;  
+  float: right;
+  color: #aaa;
+}
+
+.post-options {
+  float: right;
+  margin-left: 40px;
+  margin-top: -15px;
+}
+
+.card a i.post-options {
+  color: #aaa;
+}
+
+.post-body {
+  text-align: left;
+}
+
+.to-like {
+  color: #aaa;
+}
+
+.liked {
+  color: red;
+}
+
+.post-actions {
+  float: right;
+  margin-right: 50px;
+}
+
+.action-link {
+  color: #aaa;
+}
+
+.post-show .card {
+  margin-left: 15%;
+  width: 70%;
+}
+
+.comment {
+  margin-top: 20px;
+}

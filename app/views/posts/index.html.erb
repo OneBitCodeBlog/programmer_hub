@@ -1,2 +1,31 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<div class="row">
+  <div class="col s12 m12 l3">
+    <div class="row">
+      <%= render 'shared/user-info' %>
+    </div>
+  </div>
+  <div class="col l8 offset-l1 s12 page-content center">
+    <div class="row">
+      <div class="card hoverable">
+        <div class="card-content">
+          <div class="row">
+            <div class="col m12">
+              <%= form_for @post, url: "/posts", :method => "post" do |f| %>
+                <div class="input-field">
+                  <%= f.text_area :body, placeholder: "What are you thinking about?", class: "materialize-textarea col l9" %>
+                </div>
+                <%= f.submit "Send", class: "btn red lighten-2" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <% @posts.reverse_each do |post| %>
+        <%= render 'shared/post', post: post %>
+      <% end %>
+    </div>
+  </div>
+</div>

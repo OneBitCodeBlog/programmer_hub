@@ -1,0 +1,44 @@
+<div class="card user-info">
+  <div class="card-content">
+    <div class="row">
+      <div class="user-info">
+        <div class="col s4 m2 l4">
+          <img src="<%= @user.avatar.thumb.url %>" alt="" class="circle responsive-img">
+        </div>
+        <div class="col s6 m6 l6">
+          <p class="user-name"><%= link_to @user.name, user_path(@user) %></p>
+        </div>
+        <% if @user.id != current_user.id %>
+          <% if current_user.following?(@user) %>
+            <div class="col s2 m2 l2">
+              <%= link_to follow_path(user_id: @user.id), method: :delete do %>
+                <i class="material-icons btn-unfollow">grade</i>
+              <% end %>
+            </div>
+          <% else %>
+          <div class="col s2 m2 l2">
+            <%= link_to follows_path(user_id: @user.id), method: :post do %>
+              <i class="material-icons btn-follow">grade</i>
+            <% end %>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="row activity-info">
+      <div class="col s4 m4 l4">
+        <p class="center">Followers</p>
+        <p class="center p-info"><%= link_to @user.followers_count, followers_path(@user) %></p>
+      </div>
+      <div class="col s4 m4 l4">
+        <p class="center">Following</p>
+        <p class="center p-info"><%= link_to @user.follow_count, following_path(@user) %></p>
+      </div>
+      <div class="col s4 m4 l4">
+        <p class="center">Posts</p>
+        <p class="center p-info"><%= link_to @user.posts.count, user_path(@user) %></p>
+      </div>
+    </div>
+  </div>
+</div>

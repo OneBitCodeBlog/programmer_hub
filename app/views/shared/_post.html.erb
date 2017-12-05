@@ -1,0 +1,45 @@
+<div class="card hoverable">
+  <div class="card-content">
+    <div class="row">
+      <div class="col s2 m2 l2">
+        <img src="<%= post.user.avatar.thumb.url %>" alt="" class="circle responsive-img left">
+      </div>
+      <div class="col s6 m6 l6">
+        <p class="post-user-name"><%= link_to post.user.name, user_path(post.user_id) %></p>
+      </div>
+      <div class="col s3 m3 l3">
+        <b class="post-date"><%= post.created_at.strftime("%Hh%M") %></b>
+      </div>
+      <% if current_user.id == post.user_id %>
+        <div class="col s1 m1 l1">
+          <%= link_to post_path(post), method: "delete" do %>
+            <i class="material-icons post-options">delete</i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col m12">
+        <p class="post-body">
+          <%= link_to truncate(post.body, length: 2000), post_path(post), class: 'grey-text text-darken-2' %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="post-actions">
+        <%= link_to post_path(post) do %>
+          <i class='material-icons action-link'>chat_bubble</i> <%= post.comments.count %>
+        <% end %>
+        <% if liked?(current_user, post) %>
+          <%= link_to unlike_post_path(post), method: "delete" do %>
+            <i class="material-icons liked">favorite</i><%= post.likes.count %>
+          <% end %>
+        <% else %>
+          <%= link_to like_post_path(post), method: "post" do %>
+            <i class="material-icons to-like">favorite</i><%= post.likes.count %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
