@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
+  before_action :set_search
   
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
@@ -20,5 +21,9 @@ class ApplicationController < ActionController::Base
     def record_not_found
       flash[:alert] = "Record not Found"
       redirect_to root_url
+    end
+
+    def set_search
+      @q = User.ransack(params[:q])
     end
 end

@@ -1,2 +1,10 @@
-<h1>Users#search</h1>
-<p>Find me in app/views/users/search.html.erb</p>
+<div class="row">
+  <div class="col s12 m12 l4">
+      <%= render 'shared/user-info' %>
+  </div>
+  <div class="col l1"></div>
+  <div class="col l7 page-content">
+    <h4 class="follow-title">People</h4>
+    <%= render 'shared/list-user', users: @users %>
+  </div>
+</div>

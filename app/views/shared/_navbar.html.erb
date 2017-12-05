@@ -2,44 +2,58 @@
   <nav class="top-nav">
     <div class="nav-wrapper col s12">
       <div class="container">
-        <% if current_user %>
-          <a href="/posts" class="brand-logo">
-            <i class="material-icons">group</i>
-            <span class="logo-title">
-              ProgrammerHub
-            </span>
-          </a>
-        <% else %>
-          <a href="/" class="brand-logo">
-            <i class="material-icons">group</i>
-            <span class="logo-title">
-              ProgrammerHub
-            </span>
-          </a>
-        <% end %>
-
-        <a href="#" data-activates="side-bar" class="button-collapse"><i class="material-icons">menu</i></a>
-
-        <ul class="right hide-on-med-and-down">
-          <% if current_user %>
-            <li>
-              <a class="dropdown-button" href="#!" data-activates="dropdown1">
-                <img src="<%= current_user.avatar.thumb.url %>" alt="" class="responsive-img circle nav-image">
+        <div class="row">
+          <div class="col m3">
+            <% if current_user %>
+              <a href="/posts" class="brand-logo">
+                <i class="material-icons">group</i>
+                <span class="logo-title">
+                  ProgrammerHub
+                </span>
               </a>
-            </li>
+            <% else %>
+              <a href="/" class="brand-logo">
+                <i class="material-icons">group</i>
+                <span class="logo-title">
+                  ProgrammerHub
+                </span>
+              </a>
+            <% end %>
+            <a href="#" data-activates="side-bar" class="button-collapse"><i class="material-icons">menu</i></a>
+          </div>
 
-            <ul id="dropdown1" class="dropdown-content">
-              <li><%= link_to 'Profile', user_path(current_user) %></li>
-              <li class="divider"></li>
-              <li><%= link_to 'Config', edit_user_registration_path(current_user) %></li>
-              <li class="divider"></li>
-              <li><%= link_to('Log Out', destroy_user_session_path, :method => :delete) %></li>
-            </ul>
-          <% else %>
-            <li><a href="/users/sign_in">Login</a></li>
-            <li><a href="/users/sign_up">Register</a></li>
-          <% end %>
-        </ul>
+          <ul class="right hide-on-med-and-down">
+            <% if current_user %>
+              <div class="row">
+                <div class="col m7 offset-m3">
+                  <li class="search-field">
+                    <%= search_form_for @q, url: search_path do |f| %>
+                      <%= f.search_field :name_cont, placeholder: "Search.." %>
+                    <% end %>
+                  </li>
+                </div>
+                <div class="col m2">
+                  <li>
+                    <a class="dropdown-button" href="#!" data-activates="dropdown1">
+                      <img src="<%= current_user.avatar.thumb.url %>" alt="" class="responsive-img circle nav-image">
+                    </a>
+                  </li>
+                </div>
+
+                <ul id="dropdown1" class="dropdown-content">
+                  <li><%= link_to 'Profile', user_path(current_user) %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to 'Config', edit_user_registration_path(current_user) %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to('Log Out', destroy_user_session_path, :method => :delete) %></li>
+                </ul>
+              </div>
+            <% else %>
+              <li><a href="/users/sign_in">Login</a></li>
+              <li><a href="/users/sign_up">Register</a></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
   </nav>
@@ -47,6 +61,11 @@
 
 <ul class="side-nav" id="side-bar">
   <% if current_user %>
+    <li class="search-field">
+      <%= search_form_for @q, url: search_path do |f| %>
+        <%= f.search_field :name_cont, placeholder: "Search.." %>
+      <% end %>
+    </li>
     <li><%= link_to 'Feed', posts_path %></li>
     <li><%= link_to 'Profile', user_path(current_user) %></li>
     <li><%= link_to 'Config', edit_user_registration_path(current_user) %></li>
