@@ -11,13 +11,13 @@
         <% if @user.id != current_user.id %>
           <% if current_user.following?(@user) %>
             <div class="col s2 m2 l2">
-              <%= link_to follow_path(user_id: @user.id), method: :delete do %>
+              <%= link_to unfollow_path(user_id: @user.id), method: :delete do %>
                 <i class="material-icons btn-unfollow">grade</i>
               <% end %>
             </div>
           <% else %>
           <div class="col s2 m2 l2">
-            <%= link_to follows_path(user_id: @user.id), method: :post do %>
+            <%= link_to follow_path(user_id: @user.id), method: :post do %>
               <i class="material-icons btn-follow">grade</i>
             <% end %>
           </div>

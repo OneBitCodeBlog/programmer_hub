@@ -1,2 +1,62 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="row">
+  <div class="col s12 m12 l3">
+    <div class="row">
+      <%= render 'shared/user-info' %>
+    </div>
+
+    <div class="row">
+      <div class="card">
+        <div class="card-tabs">
+          <ul class="tabs">
+            <li class="tab">
+              <a class="active" href="#followers">Followers</a>
+            </li>
+            <li class="tab">
+              <a href="#following">Following</a>
+            </li>
+          </ul>
+        </div>
+        <div class="card-content grey lighten-4">
+          <div id="followers">
+            <ul class="collection">
+              <% @followers.each do |f| %>
+                <li class="collection-item avatar">
+                  <img src="<%= f.avatar.url %>" class="circle">
+                  <span class="title">
+                    <%= link_to truncate(f.name, length: 15), user_path(f) %>
+                  </span>
+                  <p>
+                    <%= truncate(f.description, length: 15) %>
+                  </p>
+                </li>
+              <% end %>
+            </ul>
+            <%= link_to "See all followers", followers_path(@user) %>
+          </div>
+          <div id="following">
+            <ul class="collection">
+              <% @following.each do |f| %>
+                <li class="collection-item avatar">
+                  <img src="<%= f.avatar.url %>" class="circle">
+                  <span class="title"><%= link_to f.name, user_path(f) %></span>
+                  <p>
+                    <%= truncate(f.description, length: 15) %>
+                  </p>
+                </li>
+              <% end %>
+            </ul>
+            <%= link_to "See all following", following_path(@user) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col l1"></div>
+  <div class="col l8 page-content center">
+    <div class="row">
+      <% @posts.each do |post| %>
+        <%= render 'shared/post', post: post %>
+      <% end %>
+    </div>
+  </div>
+</div>

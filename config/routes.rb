@@ -8,7 +8,9 @@ Rails.application.routes.draw do
       delete '/like', to: "likes#destroy", as: "unlike"
     end
   end
-  resources :follows, only: [:create, :destroy]
+  
+  post '/follows', to: "follows#create", as: "follow"    
+  delete '/follows', to: "follows#destroy", as: "unfollow"  
 
   get '/profile/:id', to: "users#show", as: "user"
   get '/profile/:id/following', to: "users#following", as: "following"
