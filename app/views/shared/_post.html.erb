@@ -30,15 +30,13 @@
         <%= link_to post_path(post) do %>
           <i class='material-icons action-link'>chat_bubble</i> <%= post.comments.count %>
         <% end %>
-        <% if liked?(current_user, post) %>
-          <%= link_to unlike_post_path(post), method: "delete" do %>
-            <i class="material-icons liked">favorite</i><%= post.likes.count %>
-          <% end %>
-        <% else %>
-          <%= link_to like_post_path(post), method: "post" do %>
-            <i class="material-icons to-like">favorite</i><%= post.likes.count %>
-          <% end %>
+        <%= link_to unlike_post_path(post), method: "delete", remote: true, class: "unlike unlike_#{post.id}", id: post.id, style: "#{'display:none' unless liked?(current_user, post)}" do %>
+          <i class="material-icons liked red-text">favorite</i>
         <% end %>
+        <%= link_to like_post_path(post), method: "post", remote: true, class: "like like_#{post.id}", id: post.id, style: "#{'display:none' if liked?(current_user, post)}" do %>
+          <i class="material-icons to-like">favorite</i>
+        <% end %>
+        <span class=<%= "like_count_#{post.id}" %>><%= post.likes.count %></span>
       </div>
     </div>
   </div>

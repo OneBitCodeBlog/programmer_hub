@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     posts = @user.posts.map {|post| post}
     @user.all_following.each { |user| user.posts.each{|post| posts << post } }
     @posts = (posts.sort_by! { |post| post.created_at }).reverse
-    @posts = @posts.paginate(:page => (params[:page] || 1), :per_page => 20)
+    @posts = @posts.paginate(:page => (params[:page] || 1), :per_page => 5)
 
     respond_to do |format|
       format.html
