@@ -4,7 +4,8 @@
       <%= render 'shared/user-info' %>
     </div>
   </div>
-  <div class="col l8 offset-l1 s12 page-content center">
+  <div class="col l1"></div>
+  <div class="col l8 s12 page-content center">
     <div class="row">
       <div class="card hoverable">
         <div class="card-content">
@@ -23,9 +24,30 @@
     </div>
 
     <div class="row">
-      <% @posts.reverse_each do |post| %>
+      <button class="btn-floating reload blue">
+          <i class="material-icons" style="font-size: 24px">replay</i>
+        </button>
+    </div>
+  
+
+    <div class="row" id="posts">
+      <% @posts.each do |post| %>
         <%= render 'shared/post', post: post %>
       <% end %>
+    </div>
+
+    <div class="row">
+      <div class="preloader-wrapper big active load" style="display: none">
+        <div class="spinner-layer spinner-blue-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
