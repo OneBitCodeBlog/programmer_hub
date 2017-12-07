@@ -11,7 +11,7 @@
         <div class="card-content">
           <div class="row">
             <div class="col m12">
-              <%= form_for @post, url: "/posts", :method => "post" do |f| %>
+              <%= form_for @post, url: "/posts.js", :method => "post", remote: true do |f| %>
                 <div class="input-field">
                   <%= f.text_area :body, placeholder: "What are you thinking about?", class: "materialize-textarea col l9" %>
                 </div>
